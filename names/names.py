@@ -174,7 +174,6 @@ class Queue:
 class BinarySearchTree:
     def __init__(self, value):
         self.value = value
-        self.frequency = 1
         self.left = None
         self.right = None
     
@@ -185,10 +184,7 @@ class BinarySearchTree:
         while queue.len() > 0:
           current_node = queue.dequeue()
           
-          if value == current_node.value:
-              current_node.frequency += 1
-          
-          elif value > current_node.value:
+          if value > current_node.value:
             if current_node.right is None:
               current_node.right = BinarySearchTree(value)
             else:
@@ -203,9 +199,7 @@ class BinarySearchTree:
     def contains(self, target):
         current_node = self
         while current_node is not None:
-            #We only want first duplicate
-          if target == current_node.value and current_node.frequency == 1:
-            current_node.frequency += 1
+          if target == current_node.value:
             return True
           elif target > current_node.value:
             current_node = current_node.right
