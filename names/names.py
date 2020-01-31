@@ -224,6 +224,9 @@ duplicates = []
 
 tree = BinarySearchTree(names_1[0])
 
+#Oringal double loop - O(n^2)
+
+#Now O(n logn)
 for name_1 in names_1[1:]:
     tree.insert(name_1)
 
